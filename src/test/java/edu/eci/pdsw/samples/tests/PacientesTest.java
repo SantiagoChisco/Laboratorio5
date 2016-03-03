@@ -16,6 +16,9 @@
  */
 package edu.eci.pdsw.samples.tests;
 
+import edu.eci.pdsw.samples.entities.Paciente;
+import java.sql.Date;
+
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -35,6 +38,9 @@ public class PacientesTest {
     
     @Test
     public void registroPacienteTest(){
+        
+        Paciente p = new Paciente(123,"CC","Daniel Ayala",java.sql.Date.valueOf("1994-01-29"));
+        System.out.println(p.toString());
         
     }
     
