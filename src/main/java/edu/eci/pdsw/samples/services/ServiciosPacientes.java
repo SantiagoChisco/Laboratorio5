@@ -42,7 +42,7 @@ public abstract class ServiciosPacientes {
      * @param idPaciente identificador del paciente
      * @param tipoid tipo de identificación del paciente
      * @return el paciente con el identificador dado
-     * @throws ExcepcionServiciosPacientes  si el paciente no existe
+     * @throws ExcepcionServiciosPacientes si  el paciente no esta registrado.
      */
     public abstract Paciente consultarPaciente(int idPaciente,String tipoid) throws ExcepcionServiciosPacientes;
     
@@ -50,8 +50,7 @@ public abstract class ServiciosPacientes {
     /**
      * Registra un nuevo PASIENTE en el sistema
      * @param p El nuevo paciente
-     * @throws Exception si se presenta algún error lógico
-     * o de persistencia (por ejemplo, si el paciente ya existe).
+     * @throws ExcepcionServiciosPacientes si se presenta algún error de persistencia o si el paciente ya existe.
      */
     public abstract void registrarNuevoPaciente(Paciente p) throws ExcepcionServiciosPacientes;
     
