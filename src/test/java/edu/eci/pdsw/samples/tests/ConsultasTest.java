@@ -16,6 +16,7 @@
  */
 package edu.eci.pdsw.samples.tests;
 
+import edu.eci.pdsw.samples.entities.Consulta;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -35,6 +36,9 @@ public class ConsultasTest {
     
     @Test
     public void registroPacienteTest(){
+        Consulta c = new Consulta(java.sql.Date.valueOf("1994-01-29"),"consulta General");
+        String res = "("+-1+","+"1994-01-29" +","+"consulta General)";
+        assertEquals(res, c.toString());
         
     }
     
