@@ -40,7 +40,8 @@ public class PacientesTest {
     public void registroPacienteTest(){
         
         Paciente p = new Paciente(123,"CC","Daniel Ayala",java.sql.Date.valueOf("1994-01-29"));
-        System.out.println(p.toString());
+        String res="Paciente:["+123+","+"CC"+","+"Daniel Ayala"+","+java.sql.Date.valueOf("1994-01-29")+"]\n";
+        assertEquals(res, p.toString());
         
     }
     
