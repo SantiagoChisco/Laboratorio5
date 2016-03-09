@@ -17,7 +17,11 @@
 package edu.eci.pdsw.samples.tests;
 
 import edu.eci.pdsw.samples.entities.Paciente;
+import edu.eci.pdsw.samples.services.ExcepcionServiciosPacientes;
+import edu.eci.pdsw.samples.services.ServiciosPacientes;
 import java.sql.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -39,11 +43,26 @@ public class PacientesTest {
     @Test
     public void registroPacienteTest(){
         
-        Paciente p = new Paciente(123,"CC","Daniel Ayala",java.sql.Date.valueOf("1994-01-29"));
-        String res="Paciente:["+123+","+"CC"+","+"Daniel Ayala"+","+java.sql.Date.valueOf("1994-01-29")+"]\n";
-        assertEquals(res, p.toString());
         
+        ServiciosPacientes servicio = ServiciosPacientes.getInstance();
+        Paciente p = new Paciente(111,"CC","Daniel Ayala",java.sql.Date.valueOf("1994-01-29"));
+        Paciente res = null;
+        try {
+            servicio.registrarNuevoPaciente(p);
+        } catch (ExcepcionServiciosPacientes ex) {
+            Logger.getLogger(PacientesTest.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        try {
+            res=servicio.consultarPaciente(11, "CC");
+        } catch (ExcepcionServiciosPacientes ex) {
+            System.out.println(ex.getMessage());
+            //Logger.getLogger(PacientesTest.class.getName()).log(Level.SEVERE, null, ex);
+            fail();
+            
+        }
+        assertEquals(p, res);
     }
     
-    
+  
 }
