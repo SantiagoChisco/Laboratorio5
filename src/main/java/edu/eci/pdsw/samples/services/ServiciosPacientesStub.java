@@ -36,6 +36,8 @@ public class ServiciosPacientesStub extends ServiciosPacientes{
 
     private final Map<Tupla<Integer,String>,Paciente> pacientes;
     private List<Paciente> pacientess;
+  
+
 
     public ServiciosPacientesStub() {
         this.pacientes = new LinkedHashMap<>();
