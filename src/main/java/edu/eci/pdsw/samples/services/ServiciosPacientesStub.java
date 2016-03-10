@@ -93,6 +93,19 @@ public class ServiciosPacientesStub extends ServiciosPacientes{
         pacientess = new ArrayList<>(pacientes.values());
         return pacientess;
     }
+
+    @Override
+    public void agregarConsulta() {
+        System.out.println("Entro agregar");
+        Consulta c = new Consulta(getFechayHora(), getResumen());
+        try {
+            agregarConsultaAPaciente(getId(), getTipo_id(), c);
+        } catch (ExcepcionServiciosPacientes ex) {
+            Logger.getLogger(ServiciosPacientesStub.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    
      
    
 

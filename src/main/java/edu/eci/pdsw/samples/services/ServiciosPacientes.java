@@ -30,6 +30,8 @@ public abstract class ServiciosPacientes {
     private String tipo_id;
     private String nombre;
     private Date fechaNacimiento;
+    private Date fechayHora;
+    private String resumen;
     private static ServiciosPacientes instance=new ServiciosPacientesStub();
     
      public int getId() {
@@ -99,6 +101,23 @@ public abstract class ServiciosPacientes {
     public abstract void agregarConsultaAPaciente(int idPaciente,String tipoid,Consulta c) throws ExcepcionServiciosPacientes;
     
     public abstract List<Paciente> getPacientes();
+    
+    public Date getFechayHora() {
+        return fechayHora;
+    }
+
+    public void setFechayHora(Date fechayHora) {
+        this.fechayHora = fechayHora;
+    }
+
+    public String getResumen() {
+        return resumen;
+    }
+
+    public void setResumen(String resumen) {
+        this.resumen = resumen;
+    }
+    public abstract void agregarConsulta();
     
     
 }
