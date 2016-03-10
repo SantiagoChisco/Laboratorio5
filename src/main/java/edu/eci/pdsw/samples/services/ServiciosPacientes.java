@@ -26,6 +26,7 @@ import java.util.List;
  * @author hcadavid
  */
 public abstract class ServiciosPacientes {
+    Paciente paciente;
      int id;
      String tipo_id;
      String nombre;
@@ -136,5 +137,12 @@ public abstract class ServiciosPacientes {
     }
     public abstract void agregarConsulta();
     
-    
+    public Paciente getSeleccion(){
+        return paciente;
+    }
+    public void setSeleccion(Paciente p){
+        paciente = p;
+
+    }
+    public abstract List<Consulta> getConsultaLista();
 }

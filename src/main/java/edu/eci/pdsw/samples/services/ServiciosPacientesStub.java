@@ -21,10 +21,12 @@ import edu.eci.pdsw.samples.entities.Paciente;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Hashtable;
+import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -36,6 +38,7 @@ public class ServiciosPacientesStub extends ServiciosPacientes{
 
     private final Map<Tupla<Integer,String>,Paciente> pacientes;
     private List<Paciente> pacientess;
+    private Paciente paciente;
  
  
 
@@ -50,7 +53,7 @@ public class ServiciosPacientesStub extends ServiciosPacientes{
         return tupac;
     }
 
-
+    
 
 
     public ServiciosPacientesStub() {
@@ -91,9 +94,12 @@ public class ServiciosPacientesStub extends ServiciosPacientes{
 
     private void cargarDatosEstaticos(Map<Tupla<Integer,String>,Paciente> pacientes){        
         try {
-            registrarNuevoPaciente(new Paciente(123, "CC", "Juan Perez", java.sql.Date.valueOf("2000-01-01")));
+            Paciente p = new Paciente (123, "CC", "Juan Perez", java.sql.Date.valueOf("2000-01-01"));
+            Consulta c = new Consulta(java.sql.Date.valueOf("2016-03-10"), "El Paciente tiene un control general");
+            registrarNuevoPaciente(p);
             registrarNuevoPaciente(new Paciente(321, "CC", "Maria Rodriguez", java.sql.Date.valueOf("2000-01-01")));
             registrarNuevoPaciente(new Paciente(875, "CC", "Pedro Martinez", java.sql.Date.valueOf("1956-05-01")));
+            agregarConsultaAPaciente(123, "CC", c);
         
         } catch (ExcepcionServiciosPacientes ex) {
             Logger.getLogger(ServiciosPacientesStub.class.getName()).log(Level.SEVERE, null, ex);
@@ -113,10 +119,24 @@ public class ServiciosPacientesStub extends ServiciosPacientes{
         System.out.println("Entro agregar");
         Consulta c = new Consulta(getFechayHora(), getResumen());
         try {
-            agregarConsultaAPaciente(getId(), getTipo_id(), c);
+            agregarConsultaAPaciente(getSeleccion().getId(), getSeleccion().getTipo_id(), c);
         } catch (ExcepcionServiciosPacientes ex) {
             Logger.getLogger(ServiciosPacientesStub.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    @Override
+    public List<Consulta> getConsultaLista() {
+        Set<Consulta> list = getSeleccion().getConsultas();
+        List<Consulta> consultas = new ArrayList<>();
+        Iterator<Consulta> i=list.iterator();
+        while(i.hasNext()){
+            Consulta c = i.next();
+            consultas.add(c);
+        }
+        
+      return consultas;
+        
     }
 
     

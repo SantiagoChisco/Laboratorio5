@@ -46,7 +46,9 @@
                 </p:column>
 
                 <p:column headerText="Cita">
-                    <h:commandButton action="registroconsultas?faces-redirect=true" value="Registar Cita" />
+                    <p:commandButton action="registroconsultas?faces-redirect=true" value="Registar Cita">
+                        <f:setPropertyActionListener value="#{paciente}" target="#{RegistroConsultaBean.servicio.seleccion}"/>
+                    </p:commandButton>
                 </p:column>
             </p:dataTable>
              
