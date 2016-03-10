@@ -54,7 +54,7 @@ public class PacientesTest {
         }
         
         try {
-            res=servicio.consultarPaciente(11, "CC");
+            res=servicio.consultarPaciente(111, "CC");
         } catch (ExcepcionServiciosPacientes ex) {
             System.out.println(ex.getMessage());
             //Logger.getLogger(PacientesTest.class.getName()).log(Level.SEVERE, null, ex);
