@@ -18,13 +18,14 @@ package edu.eci.pdsw.samples.services;
 
 import edu.eci.pdsw.samples.entities.Consulta;
 import edu.eci.pdsw.samples.entities.Paciente;
+import java.util.List;
 
 /**
  *
  * @author hcadavid
  */
 public abstract class ServiciosPacientes {
-    
+    private int id;
     
     private static ServiciosPacientes instance=new ServiciosPacientesStub();
     
@@ -62,5 +63,8 @@ public abstract class ServiciosPacientes {
      * @throws ExcepcionServiciosPacientes si se presenta algún error de persistencia o si el paciente no existe.
      */
     public abstract void agregarConsultaAPaciente(int idPaciente,String tipoid,Consulta c) throws ExcepcionServiciosPacientes;
+    
+    public abstract List<Paciente> getPacientes();
+    
     
 }

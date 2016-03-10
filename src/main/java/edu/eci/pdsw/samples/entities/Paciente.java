@@ -27,6 +27,7 @@ import java.util.Set;
 public class Paciente {
     
     private int id;
+    
     private String tipo_id;
     private String nombre;
     private Date fechaNacimiento;
