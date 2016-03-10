@@ -26,16 +26,33 @@ import java.util.List;
  * @author hcadavid
  */
 public abstract class ServiciosPacientes {
-    private int id;
-    private String tipo_id;
-    private String nombre;
-    private Date fechaNacimiento;
-    private Date fechayHora;
-    private String resumen;
+     int id;
+     String tipo_id;
+     String nombre;
+     Date fechaNacimiento;
+     Date fechayHora;
+     String fch_tmp;
+     String resumen;
     private static ServiciosPacientes instance=new ServiciosPacientesStub();
-    
+    Paciente tupac;
+
+    public Paciente getTupac() {
+        return tupac;
+    }
+
+    public void setFch_tmp(String fch_tmp) {
+        this.fch_tmp = fch_tmp;
+    }
+
+    public void setTupac(Paciente tupac) {
+        this.tupac = tupac;
+    }
      public int getId() {
         return id;
+    }
+
+    public String getFch_tmp() {
+        return fch_tmp;
     }
 
     public void setId(int id) {

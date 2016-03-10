@@ -11,21 +11,21 @@
         <h:form id="formulario">  
             <p:panel id="Panel_pacientes" header="Registrar Paciente">
                 <p:panelGrid columns="2">
-                    <h:outputLabel id="pacienteID" for ="pacienteID" value="Identificacion"/>
+                    <h:outputLabel id="pacienteID" value="Identificacion"/>
                     <p:inputText value="#{RegistroConsultaBean.servicio.id}"></p:inputText>
-                    <h:outputLabel id="tipo_id" for ="tipo_id" value="Tipo de identificacion"/>
+                    <h:outputLabel id="tipo_id" value="Tipo de identificacion"/>
                     <p:inputText value="#{RegistroConsultaBean.servicio.tipo_id}"></p:inputText>
-                    <h:outputText id="nombre" for="nombre" value="Nombre"/>
+                    <h:outputText id="nombre" value="Nombre"/>
                     <p:inputText value="#{RegistroConsultaBean.servicio.nombre}"></p:inputText>
-                    <h:outputText id="fechaconsulta" for="fechaconsulta" value="Fecha Nacimiento"></h:outputText>
-                    <p:inputText value="#{RegistroConsultaBean.servicio.fechaNacimiento}"></p:inputText>
+                    <h:outputText id="fechaconsulta" value="Fecha Nacimiento"></h:outputText>
+                    <p:inputText value="#{RegistroConsultaBean.servicio.fch_tmp}"></p:inputText>
                      
-                    <p:commandButton value="Registrar Paciente" />
+                    <p:commandButton value="Registrar Paciente" action="#{RegistroConsultaBean.servicio.registrarNuevoPaciente(RegistroConsultaBean.servicio.tupac)}" update="formulario" />
                    
                 </p:panelGrid>
             </p:panel>
                   
-            <p:dataTable var="paciente" value="#{RegistroConsultaBean.servicio.pacientes}">
+            <p:dataTable  var="paciente" value="#{RegistroConsultaBean.servicio.pacientes}">
                 <f:facet name="header">
                     Pacientes
                 </f:facet>

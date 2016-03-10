@@ -36,7 +36,21 @@ public class ServiciosPacientesStub extends ServiciosPacientes{
 
     private final Map<Tupla<Integer,String>,Paciente> pacientes;
     private List<Paciente> pacientess;
-  
+ 
+ 
+
+    public void setPacientess(List<Paciente> pacientess) {
+        this.pacientess = pacientess;
+    }
+
+    @Override
+    public Paciente getTupac() {
+        fechaNacimiento = Date.valueOf(fch_tmp);
+        tupac = new Paciente(id, tipo_id, nombre, fechaNacimiento);
+        return tupac;
+    }
+
+
 
 
     public ServiciosPacientesStub() {
