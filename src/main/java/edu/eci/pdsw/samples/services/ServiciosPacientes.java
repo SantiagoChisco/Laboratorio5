@@ -34,6 +34,7 @@ public abstract class ServiciosPacientes {
      Date fechayHora;
      String fch_tmp;
      String resumen;
+     Date fecha;
     private static ServiciosPacientes instance=new ServiciosPacientesStub();
     Paciente tupac;
 
@@ -126,6 +127,14 @@ public abstract class ServiciosPacientes {
 
     public void setFechayHora(Date fechayHora) {
         this.fechayHora = fechayHora;
+        
+    }
+    public void setFecha(String f){
+        fecha = Date.valueOf(f);
+        
+    }
+    public Date getFecha(){
+        return fecha;
     }
 
     public String getResumen() {

@@ -116,8 +116,8 @@ public class ServiciosPacientesStub extends ServiciosPacientes{
 
     @Override
     public void agregarConsulta() {
-        System.out.println("Entro agregar");
-        Consulta c = new Consulta(getFechayHora(), getResumen());
+        fechaNacimiento = Date.valueOf(fch_tmp);
+        Consulta c = new Consulta(fechaNacimiento, getResumen());
         try {
             agregarConsultaAPaciente(getSeleccion().getId(), getSeleccion().getTipo_id(), c);
         } catch (ExcepcionServiciosPacientes ex) {

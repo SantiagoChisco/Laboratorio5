@@ -10,9 +10,9 @@
             <p:panel id="pnl_addcita" header="Agregar Cita" style="width: 600px;"> 
                 <h:panelGrid columns="2">
                     <h:outputLabel value= "Fecha y hora"/>
-                    <p:inputText value="#{RegistroConsultaBean.servicio.fechayHora}"></p:inputText>
-                    <h:outputLabel value= "Resumen"/>
                     <p:inputText value="#{RegistroConsultaBean.servicio.fch_tmp}"></p:inputText>
+                    <h:outputLabel value= "Resumen"/>
+                    <p:inputText value="#{RegistroConsultaBean.servicio.resumen}"></p:inputText>
                     <h:commandButton value="Registrar Cita" action="#{RegistroConsultaBean.servicio.agregarConsulta()}" />
                 </h:panelGrid>
             </p:panel>
@@ -29,6 +29,8 @@
                 </p:column>
 
             </p:dataTable>
+            <p:commandButton action="registropacientes?faces-redirect=true" value="Volver">
+            </p:commandButton>
         </h:form>
     </h:body>
 
