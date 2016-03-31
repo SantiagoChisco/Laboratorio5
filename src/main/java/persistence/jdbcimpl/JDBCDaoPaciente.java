@@ -33,12 +33,12 @@ public class JDBCDaoPaciente implements DaoPaciente  {
     @Override
     public Paciente load(int idpaciente, String tipoid) throws PersistenceException {
         PreparedStatement ps;
-        Set<Consulta> consultas = new LinkedHashSet<>();
+          Set<Consulta> consultas = new LinkedHashSet<>();
         
         try {
             
             ps = con.prepareStatement("select pac.nombre, pac.fecha_nacimiento, con.idCONSULTAS, con.fecha_y_hora, con.resumen \n" +
-"from PACIENTES as pac inner join CONSULTAS as con on con.PACIENTES_id=pac.id and con.PACIENTES_tipo_id=pac.tipo_id \n" +
+"from PACIENTES as pac left join CONSULTAS as con on con.PACIENTES_id=pac.id and con.PACIENTES_tipo_id=pac.tipo_id \n" +
 "where pac.id=? and pac.tipo_id=?");
             ps.setInt(1, idpaciente);
             ps.setString(2, tipoid);
@@ -54,7 +54,6 @@ public class JDBCDaoPaciente implements DaoPaciente  {
                 return p;
 
             }
-            
         } catch (SQLException ex) {
             throw new PersistenceException("An error ocurred while loading "+idpaciente,ex);
         }
@@ -63,7 +62,6 @@ public class JDBCDaoPaciente implements DaoPaciente  {
 
     @Override
     public void save(Paciente p) throws PersistenceException {
-        System.out.println("Entro al save");
         PreparedStatement ps;
         PreparedStatement cs;
         try {
