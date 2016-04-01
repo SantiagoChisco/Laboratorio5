@@ -7,6 +7,8 @@ package edu.eci.pdsw.samples.tests;
 
 import edu.eci.pdsw.samples.entities.Consulta;
 import edu.eci.pdsw.samples.entities.Paciente;
+import edu.eci.pdsw.samples.services.ExcepcionServiciosPacientes;
+import edu.eci.pdsw.samples.services.ServiciosPacientes;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.LinkedHashSet;
@@ -24,6 +26,8 @@ import org.junit.Test;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Date;
+import java.sql.Statement;
+import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.Properties;
 import java.util.Set;
@@ -31,6 +35,7 @@ import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import persistence.*;
+import persistence.jdbcimpl.ServicioPacientesDao;
 
 /**
  *
@@ -45,8 +50,8 @@ public class PacientePersistenceTest {
     }
     
     @Test
-    public void databaseConnectionTest() throws IOException, PersistenceException{
-            System.out.println("Realizando prueba");
+    public void databaseConnectionTest() throws IOException, PersistenceException, ExcepcionServiciosPacientes{
+            
              InputStream input = null;
              input = ClassLoader.getSystemResourceAsStream("applicationconfig_test.properties");
              Properties properties=new Properties();
@@ -55,9 +60,11 @@ public class PacientePersistenceTest {
              DaoFactory daof=DaoFactory.getInstance(properties);
              
              daof.beginSession(); 
-             System.out.println("Inicio sesion");
+            
              //Prueba 1
+             
              DaoPaciente dp = daof.getDaoPaciente();
+             
              Paciente  p = new Paciente(987, "CC", "Juan Sanchez", java.sql.Date.valueOf("1995-01-01"));
              Set<Consulta> consultas = new LinkedHashSet<>();
              Consulta c = new Consulta(java.sql.Date.valueOf("2000-10-01"), "Consulta general");
@@ -68,7 +75,7 @@ public class PacientePersistenceTest {
              consultas.add(c3);
              p.setConsultas(consultas);
              dp.save(p);
-             Paciente res = dp.load(987, "CC");
+             Paciente res = dp.load(987, "CC");             
              //assertEquals(java.lang.Object p, java.lang.Object res);
              assertEquals(p.getId(), res.getId());
              assertEquals(3, res.getConsultas().size());

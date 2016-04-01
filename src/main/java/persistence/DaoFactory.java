@@ -5,6 +5,7 @@
  */
 package persistence;
 
+import edu.eci.pdsw.samples.services.ServiciosPacientes;
 import java.util.Properties;
 import persistence.jdbcimpl.JDBCDaoFactory;
 
@@ -36,6 +37,7 @@ public  abstract class DaoFactory {
     public abstract void beginSession() throws PersistenceException;
 
     public abstract DaoPaciente getDaoPaciente();
+    public abstract ServiciosPacientes getServiciosPacientes();
 
     public abstract void commitTransaction() throws PersistenceException;
 

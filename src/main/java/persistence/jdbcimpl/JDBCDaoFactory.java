@@ -5,6 +5,7 @@
  */
 package persistence.jdbcimpl;
 
+import edu.eci.pdsw.samples.services.ServiciosPacientes;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -107,6 +108,11 @@ public class JDBCDaoFactory extends DaoFactory{
     @Override
     public DaoPaciente getDaoPaciente() {
         return new JDBCDaoPaciente(connectionInstance.get());
+    }
+
+    @Override
+    public ServiciosPacientes getServiciosPacientes() {
+        return new ServicioPacientesDao(connectionInstance.get());
     }
     
 }
