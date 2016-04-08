@@ -26,69 +26,9 @@ import java.util.List;
  * @author hcadavid
  */
 public abstract class ServiciosPacientes {
-    Paciente paciente;
-     int id;
-     String tipo_id;
-     String nombre;
-     Date fechaNacimiento;
-     Date fechayHora;
-     String fch_tmp;
-     String resumen;
-     Date fecha;
+    
     private static ServiciosPacientes instance=new ServiciosPacientesStub();
-    Paciente tupac;
-
-    public Paciente getTupac() {
-        return tupac;
-    }
-
-    public void setFch_tmp(String fch_tmp) {
-        this.fch_tmp = fch_tmp;
-    }
-
-    public void setTupac(Paciente tupac) {
-        this.tupac = tupac;
-    }
-     public int getId() {
-        return id;
-    }
-
-    public String getFch_tmp() {
-        return fch_tmp;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getTipo_id() {
-        return tipo_id;
-    }
-
-    public void setTipo_id(String tipo_id) {
-        this.tipo_id = tipo_id;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public Date getFechaNacimiento() {
-        return fechaNacimiento;
-    }
-
-    public void setFechaNacimiento(Date fechaNacimiento) {
-        this.fechaNacimiento = fechaNacimiento;
-    }
-    
-    protected ServiciosPacientes(){        
-
-    }
-    
+  
     public static ServiciosPacientes getInstance() throws RuntimeException{        
         return instance;
     }
@@ -120,38 +60,6 @@ public abstract class ServiciosPacientes {
     public abstract void agregarConsultaAPaciente(int idPaciente,String tipoid,Consulta c) throws ExcepcionServiciosPacientes;
     
     public abstract List<Paciente> getPacientes();
+ 
     
-    public Date getFechayHora() {
-        return fechayHora;
-    }
-
-    public void setFechayHora(Date fechayHora) {
-        this.fechayHora = fechayHora;
-        
-    }
-    public void setFecha(String f){
-        fecha = Date.valueOf(f);
-        
-    }
-    public Date getFecha(){
-        return fecha;
-    }
-
-    public String getResumen() {
-        return resumen;
-    }
-
-    public void setResumen(String resumen) {
-        this.resumen = resumen;
-    }
-    public abstract void agregarConsulta();
-    
-    public Paciente getSeleccion(){
-        return paciente;
-    }
-    public void setSeleccion(Paciente p){
-        paciente = p;
-
-    }
-    public abstract List<Consulta> getConsultaLista();
 }

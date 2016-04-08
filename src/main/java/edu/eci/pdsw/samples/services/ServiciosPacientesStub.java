@@ -38,30 +38,18 @@ public class ServiciosPacientesStub extends ServiciosPacientes{
 
     private final Map<Tupla<Integer,String>,Paciente> pacientes;
     private List<Paciente> pacientess;
-    private Paciente paciente;
- 
- 
-
-    public void setPacientess(List<Paciente> pacientess) {
-        this.pacientess = pacientess;
-    }
-
-    @Override
-    public Paciente getTupac() {
-        fechaNacimiento = Date.valueOf(fch_tmp);
-        tupac = new Paciente(id, tipo_id, nombre, fechaNacimiento);
-        return tupac;
-    }
-
     
-
-
+    
     public ServiciosPacientesStub() {
         this.pacientes = new LinkedHashMap<>();
         cargarDatosEstaticos(pacientes);
     }
     
-   
+   @Override
+    public List<Paciente> getPacientes() {
+        pacientess = new ArrayList<>(pacientes.values());
+        return pacientess;
+    }
     
     @Override
     public Paciente consultarPaciente(int idPaciente, String tipoid) throws ExcepcionServiciosPacientes {
@@ -107,42 +95,7 @@ public class ServiciosPacientesStub extends ServiciosPacientes{
         
         
     }
-
-    @Override
-    public List<Paciente> getPacientes() {
-        pacientess = new ArrayList<>(pacientes.values());
-        return pacientess;
-    }
-
-    @Override
-    public void agregarConsulta() {
-        fechaNacimiento = Date.valueOf(fch_tmp);
-        Consulta c = new Consulta(fechaNacimiento, getResumen());
-        try {
-            agregarConsultaAPaciente(getSeleccion().getId(), getSeleccion().getTipo_id(), c);
-        } catch (ExcepcionServiciosPacientes ex) {
-            Logger.getLogger(ServiciosPacientesStub.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
-    @Override
-    public List<Consulta> getConsultaLista() {
-        Set<Consulta> list = getSeleccion().getConsultas();
-        List<Consulta> consultas = new ArrayList<>();
-        Iterator<Consulta> i=list.iterator();
-        while(i.hasNext()){
-            Consulta c = i.next();
-            consultas.add(c);
-        }
-        
-      return consultas;
-        
-    }
-
-    
-     
-   
-
+         
 }
 
 

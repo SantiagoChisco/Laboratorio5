@@ -12,20 +12,20 @@
             <p:panel id="Panel_pacientes" header="Registrar Paciente">
                 <p:panelGrid columns="2">
                     <h:outputLabel id="pacienteID" value="Identificacion"/>
-                    <p:inputText value="#{RegistroConsultaBean.servicio.id}"></p:inputText>
+                    <p:inputText value="#{RegistroConsultaBean.id}"></p:inputText>
                     <h:outputLabel id="tipo_id" value="Tipo de identificacion"/>
-                    <p:inputText value="#{RegistroConsultaBean.servicio.tipo_id}"></p:inputText>
+                    <p:inputText value="#{RegistroConsultaBean.tipo_id}"></p:inputText>
                     <h:outputText id="nombre" value="Nombre"/>
-                    <p:inputText value="#{RegistroConsultaBean.servicio.nombre}"></p:inputText>
+                    <p:inputText value="#{RegistroConsultaBean.nombre}"></p:inputText>
                     <h:outputText id="fechaconsulta" value="Fecha Nacimiento"></h:outputText>
-                    <p:inputText value="#{RegistroConsultaBean.servicio.fch_tmp}"></p:inputText>
+                    <p:inputText value="#{RegistroConsultaBean.fch_tmp}"></p:inputText>
                      
-                    <p:commandButton value="Registrar Paciente" action="#{RegistroConsultaBean.servicio.registrarNuevoPaciente(RegistroConsultaBean.servicio.tupac)}" update="formulario" />
+                    <p:commandButton value="Registrar Paciente" action="#{RegistroConsultaBean.registrarNuevoPaciente(RegistroConsultaBean.tupac)}" update="formulario" />
                    
                 </p:panelGrid>
             </p:panel>
                   
-            <p:dataTable  var="paciente" value="#{RegistroConsultaBean.servicio.pacientes}">
+            <p:dataTable  var="paciente" value="#{RegistroConsultaBean.pacientes}">
                 <f:facet name="header">
                     Pacientes
                 </f:facet>
@@ -47,7 +47,7 @@
 
                 <p:column headerText="Cita">
                     <p:commandButton action="registroconsultas?faces-redirect=true" value="Registar Cita">
-                        <f:setPropertyActionListener value="#{paciente}" target="#{RegistroConsultaBean.servicio.seleccion}"/>
+                        <f:setPropertyActionListener value="#{paciente}" target="#{RegistroConsultaBean.seleccion}"/>
                     </p:commandButton>
                 </p:column>
             </p:dataTable>
